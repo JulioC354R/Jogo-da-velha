@@ -13,3 +13,10 @@ class Player:
                 board[key] = symbol
 
         return board
+    
+    def switchPlayerTime(self,playerTime, player1, player2):
+        if playerTime == player1:
+            playerTime = player2
+        elif playerTime == player2:
+            playerTime = player1
+        return playerTime

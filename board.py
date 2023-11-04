@@ -10,24 +10,34 @@ class Board:
     #mostrar o tabuleiro
     def show_board(self, board: dict):
 
-        linha ='------------'
+        linha ='   ------------'
         
-        print()         #0              #1          #2
-        print(f' {board["a1"]} | {board["a2"]} | {board["a3"]}')
+        print(f'    1 | 2 | 3\n')
+        print(f' A  {board["a1"]} | {board["a2"]} | {board["a3"]}')
         print(linha)    #3              #4          #5
-        print(f' {board["b1"]} | {board["b2"]} | {board["b3"]}')
-        print(linha)    #6              #7          #8
-        print(f' {board["c1"]} | {board["c2"]} | {board["c3"]}')
+        print(f' B  {board["b1"]} | {board["b2"]} | {board["b3"]}')
+        print(linha)
+        print(f' C  {board["c1"]} | {board["c2"]} | {board["c3"]}')
         print()
 
-    
+    def check_draw(self, board: dict):
+        """Checa se todos os quadrados estão ocupados, se sim retorna empate"""
+        draw = False
+        empty = 0
 
-    #atualizar o tabuleiro
-    def update_board():
-        pass
+        for key, value in board.items():
+            if value == ' ':
+                empty +=1
+        
+        if empty == 0:
+            draw = True
+        return draw
+                
+
+
 
     #verificar se alguém venceu
-    def check_win_condition(self, board: dict, victory_list : list):
+    def check_win_condition(self, board: dict):
         #Checando se X venceu
         victory = False
         winner = ''
@@ -82,9 +92,7 @@ class Board:
 
 
         if victory is True:
-            print(f'Jogador {winner} venceu!')
-            victory_list.append(winner)
             print(f'Onde pontuou: {where_wins}')
 
-        return victory
+        return victory, winner
 
